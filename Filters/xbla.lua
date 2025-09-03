@@ -82,6 +82,6 @@ GameListFilterCategories.User["Show Xbox Live Arcade"] = function(Content)
   return isXBLA(Content)
 end
 
-GameListFilterCategories.User["Show Xbox Live Arcade"] = function(Content)
+GameListFilterCategories.User["Hide Xbox Live Arcade"] = function(Content)
   return not isXBLA(Content)
 end

@@ -67,6 +67,6 @@ GameListFilterCategories.User["Show Xbox 360"] = function(Content)
   return isXbox360(Content)
 end
 
-GameListFilterCategories.User["Show Xbox 360"] = function(Content)
+GameListFilterCategories.User["Hide Xbox 360"] = function(Content)
   return not isXbox360(Content)
 end
