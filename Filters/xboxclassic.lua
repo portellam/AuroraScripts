@@ -1,0 +1,42 @@
+--TODO: get complete list
+--TODO: create lists given compatibility per Xenon Fusion emulator revision.
+local title_id_list = (
+  0x41560017,0x4156001B,0x41560020,0x41560051,0x4253000B,
+  0x43430001,0x43430007,0x43430014,0x45410030,0x4541005B,
+  0x4541005D,0x4541007B,0x45410085,0x45430002,0x45530001,
+  0x45530001,0x4553000A,0x45530019,0x46490002,0x47560001,
+  0x47560004,0x49470009,0x494F0003,0x4A570009,0x4B420002,
+  0x4B4E0024,0x4C410004,0x4C41000B,0x4C410011,0x4C410013,
+  0x4C410014,0x4C41001A,0x4D530001,0x4D530010,0x4D53001E,
+  0x4D530021,0x4D53002A,0x4D530031,0x4D530035,0x4D530036,
+  0x4D530041,0x4D53004E,0x4D530051,0x4D53005D,0x4D53006B,
+  0x4D570005,0x4D57000E,0x4D570019,0x4D57001C,0x4E4D0001,
+  0x4b4e0001,0x53450003,0x53450014,0x53450028,0x53450036,
+  0x53450038,0x53450088,0x5443000D,0x5451000A,0x54510089,
+  0x54510106,0x54540001,0x54540004,0x5454000E,0x54540010,
+  0x5454007E,0x54540082,0x545400B0,0x55530007,0x55530009,
+  0x55530037,0x55530048,0x5553004D,0x5553005F,0x5655000F,
+  0x56550015,0x56550023,0x5655002F,0x5656000A
+)
+
+local function isXboxClassic(Content)
+  -- if Content.Group == ContentGroup.XboxClassic then  --TODO: determine if such parameter exists.
+  --   return true
+  -- end
+
+  for _, title_id in ipairs(title_id_list) do
+    if Content.TitleId == title_id then
+      return true
+    end
+  end
+
+  return false
+end
+
+GameListFilterCategories.User["Show Xbox"] = function(Content)
+  return isXboxClassic(Content)
+end
+
+GameListFilterCategories.User["Hide Xbox"] = function(Content)
+  return not isXboxClassic(Content)
+end
