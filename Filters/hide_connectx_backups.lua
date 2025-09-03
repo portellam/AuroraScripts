@@ -1,7 +1,9 @@
-GameListFilterCategories.User["Only ConnectX"] = function(Content)
-	return (string.lower(Content.Root) == "connx:\\")
+GameListFilterCategories.User["Show ConnectX"] = function(Content)
+	local isConnectX = (string.lower(Content.Root) == "connx:\\")
+	return isConnectX
 end
 
 GameListFilterCategories.User["Hide ConnectX"] = function(Content)
-	return (string.lower(Content.Root) ~= "connx:\\")
+	local isConnectX = (string.lower(Content.Root) == "connx:\\")
+	return not isConnectX
 end
