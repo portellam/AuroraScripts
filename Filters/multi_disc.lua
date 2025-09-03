@@ -1,9 +1,11 @@
+local function hasMultiDisc(Content)
+	return Content.DiscNum >= 2
+end
+
 GameListFilterCategories.User["Show Multi-Disc"] = function(Content)
-	local hasMultiDisc = (Content.DiscNum >= 2)
-	return hasMultiDisc
+	return hasMultiDisc(Content)
 end
 
 GameListFilterCategories.User["Hide Multi-Disc"] = function(Content)
-	local hasMultiDisc = (Content.DiscNum >= 2)
-	return not hasMultiDisc
+	return not hasMultiDisc(Content)
 end
