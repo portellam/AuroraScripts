@@ -19,7 +19,7 @@ local title_id_list = (
   0x56550015,0x56550023,0x5655002F,0x5656000A
 )
 
-local function isXboxClassic(Content)
+local function is_xbox_classic(Content)
   -- if Content.Group == ContentGroup.XboxClassic then  --TODO: determine if such parameter exists.
   --   return true
   -- end
@@ -34,9 +34,9 @@ local function isXboxClassic(Content)
 end
 
 GameListFilterCategories.User["Show Xbox"] = function(Content)
-  return isXboxClassic(Content)
+  return is_xbox_classic(Content)
 end
 
 GameListFilterCategories.User["Hide Xbox"] = function(Content)
-  return not isXboxClassic(Content)
+  return not is_xbox_classic(Content)
 end

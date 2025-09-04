@@ -64,7 +64,8 @@ local title_id_list = (
   0x58411452,0x5841145E,0x58411460,0x584114AD,0x58419A36,
   0x5851145b,0x58550981,0x58550B6A,0x5941087C
 )
-local function isXBLA(Content)
+
+local function is_xbla(Content)
   if Content.Group == ContentGroup.XBLA then
     return true
   end
@@ -79,9 +80,9 @@ local function isXBLA(Content)
 end
 
 GameListFilterCategories.User["Show Xbox Live Arcade"] = function(Content)
-  return isXBLA(Content)
+  return is_xbla(Content)
 end
 
 GameListFilterCategories.User["Hide Xbox Live Arcade"] = function(Content)
-  return not isXBLA(Content)
+  return not is_xbla(Content)
 end

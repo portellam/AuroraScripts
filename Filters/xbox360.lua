@@ -49,7 +49,7 @@ local title_id_list = (
   0x584113e3,0x585502A6
 )
 
-local function isXbox360(Content)
+local function is_xbox_360(Content)
   if Content.Group == ContentGroup.Xbox360 then
     return true
   end
@@ -64,9 +64,9 @@ local function isXbox360(Content)
 end
 
 GameListFilterCategories.User["Show Xbox 360"] = function(Content)
-  return isXbox360(Content)
+  return is_xbox_360(Content)
 end
 
 GameListFilterCategories.User["Hide Xbox 360"] = function(Content)
-  return not isXbox360(Content)
+  return not is_xbox_360(Content)
 end
