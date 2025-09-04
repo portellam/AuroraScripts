@@ -1,92 +1,96 @@
-local function IsActivisionGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 10)) == "activision")
+local function is_developer(content, developer, length)
+	return string.lower(string.sub(content.Developer, 0, length)) == developer
 end
 
-local function IsBandaiNamcoGame(Content)
-	return 	(string.lower(string.sub(Content.Developer, 0, 6)) == "bandai") or 
-					(string.lower(string.sub(Content.Developer, 0, 5)) == "namco")
+local function is_activision_game(content)
+	return is_developer(content, "activision", 10)
 end
 
-local function IsBethesdaGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 8)) == "bethesda")
+local function is_bandai_namco_game(content)
+	return is_developer(content, "bandai", 6)
+			or is_developer(content, "namco", 5)
 end
 
-local function IsCapcomGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 6)) == "capcom")
+local function is_bethesda_game(content)
+	return is_developer(content, "bethesda", 8)
 end
 
-local function IsCodeMastersGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 11)) == "codemasters")
+local function is_capcom_game(content)
+	return is_developer(content, "capcom", 6)
 end
 
-local function IsDisneyGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 6)) == "disney")
+local function is_code_masters_game(content)
+	return is_developer(content, "codemasters", 11)
 end
 
-local function IsEaGame(Content)
-	return	(string.lower(string.sub(Content.Developer, 0, 15)) == "electronic arts") or 
-					(string.lower(string.sub(Content.Developer, 0, 2)) == "ea")
+local function is_disney_game(content)
+	return is_developer(content, "disney", 6)
 end
 
-local function IsEidosGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 5)) == "eidos")
+local function is_ea_game(content)
+	return is_developer(content, "electronic arts", 15)
+			or is_developer(content, "ea", 2)
 end
 
-local function IsKonamiGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 6)) == "konami")
+local function is_eidos_game(content)
+	return is_developer(content, "eidos", 5)
 end
 
-local function IsMicrosoftGame(Content)
-	return	(string.lower(string.sub(Content.Developer, 0, 9)) == "microsoft") or 
-					(string.lower(string.sub(Content.Developer, 0, 3)) == "mgs")
+local function is_konami_game(content)
+	return is_developer(content, "konami", 6)
 end
 
-local function IsPopCapGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 6)) == "popcap")
+local function is_microsoft_game(content)
+	return is_developer(content, "microsoft", 9)
+			or is_developer(content, "mgs", 3)
 end
 
-local function IsRockStarGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 8)) == "rockstar")
+local function is_pop_cap_game(content)
+	return is_developer(content, "popcap", 6)
 end
 
-local function IsSegaGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 4)) == "sega")
+local function is_rockstar_game(content)
+	return is_developer(content, "rockstar", 8)
 end
 
-local function IsSquareEnixGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 6)) == "square")
+local function is_sega_game(content)
+	return is_developer(content, "sega", 4)
 end
 
-local function IsTHQGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 3)) == "thq")
+local function is_square_enix_game(content)
+	return is_developer(content, "square", 6)
 end
 
-local function IsUbisoftGame(Content)
-	return (string.lower(string.sub(Content.Developer, 0, 7)) == "ubisoft")
+local function is_thq_game(content)
+	return is_developer(content, "thq", 3)
 end
 
-local function IsWarnerBrosGame(Content)
-	return	(string.lower(string.sub(Content.Developer, 0, 11)) == "warner bros") or 
-					(string.lower(string.sub(Content.Developer, 0, 8)) == "wb games") or 
-					(string.lower(string.sub(Content.Developer, 0, 15)) == "warner brothers")
+local function is_ubisoft_game(content)
+	return is_developer(content, "ubisoft", 7)
+end
+
+local function is_warner_bros_game(content)
+	return 	is_developer(content, "warner bros", 11) or 
+					is_developer(content, "wb games", 8) or 
+					is_developer(content, "warner brothers", 15)
 end
 
 GameListFilterCategories.Developers = {
-	EA = function(Content) return IsEaGame(Content) end,
-	Activision = function(Content) return IsActivisionGame(Content) end,
-	["Bandai Namco"] = function(Content) return IsBandaiNamcoGame(Content) end,
-	Bethesda = function(Content) return IsBethesdaGame(Content) end,
-	Capcom = function(Content) return IsCapcomGame(Content) end,
-	Codemasters = function(Content) return IsCodeMastersGame(Content) end,
-	Disney = function(Content) return IsDisneyGame(Content) end,
-	Eidos = function(Content) return IsEidosGame(Content) end,
-	Konami = function(Content) return IsKonamiGame(Content) end,
-	Microsoft = function(Content) return IsMicrosoftGame(Content) end,
-	PopCap = function(Content) return IsPopCapGame(Content) end,
-	Rockstar = function(Content) return IsRockStarGame(Content) end,
-	Sega = function(Content) return IsSegaGame(Content) end,
-	["Square Enix"] = function(Content) return IsSquareEnixGame(Content) end,
-	THQ = function(Content) return IsTHQGame(Content) end,
-	Ubisoft = function(Content) return IsUbisoftGame(Content) end,
-	["Warner Bros"] = function(Content) return IsWarnerBrosGame(Content) end
+	EA = function(content) return is_ea_game(content) end,
+	Activision = function(content) return is_activision_game(content) end,
+	["Bandai Namco"] = function(content) return is_bandai_namco_game(content) end,
+	Bethesda = function(content) return is_bethesda_game(content) end,
+	Capcom = function(content) return is_capcom_game(content) end,
+	Codemasters = function(content) return is_code_masters_game(content) end,
+	Disney = function(content) return is_disney_game(content) end,
+	Eidos = function(content) return is_eidos_game(content) end,
+	Konami = function(content) return is_konami_game(content) end,
+	Microsoft = function(content) return is_microsoft_game(content) end,
+	PopCap = function(content) return is_pop_cap_game(content) end,
+	Rockstar = function(content) return is_rockstar_game(content) end,
+	Sega = function(content) return is_sega_game(content) end,
+	["Square Enix"] = function(content) return is_square_enix_game(content) end,
+	THQ = function(content) return is_thq_game(content) end,
+	Ubisoft = function(content) return is_ubisoft_game(content) end,
+	["Warner Bros"] = function(content) return is_warner_bros_game(content) end
 }
