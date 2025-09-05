@@ -65,24 +65,11 @@ local title_id_list = (
   0x5851145b,0x58550981,0x58550B6A,0x5941087C
 )
 
-local function is_xbla(Content)
-  if Content.Group == ContentGroup.XBLA then
-    return true
-  end
+local module = require("get_filters_from_id_list")
 
-  for _, title_id in ipairs(title_id_list) do
-    if Content.TitleId == title_id then
-      return true
-    end
-  end
-
-  return false
-end
-
-GameListFilterCategories.User["Show Xbox Live Arcade"] = function(Content)
-  return is_xbla(Content)
-end
-
-GameListFilterCategories.User["Hide Xbox Live Arcade"] = function(Content)
-  return not is_xbla(Content)
-end
+module.set_filters(
+  Content,
+  "XBLA",
+  title_id_list,
+  Content.Group == ContentGroup.XBLA
+)

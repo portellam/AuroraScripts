@@ -19,24 +19,17 @@ local title_id_list = (
   0x56550015,0x56550023,0x5655002F,0x5656000A
 )
 
-local function is_xbox_classic(Content)
-  -- if Content.Group == ContentGroup.XboxClassic then  --TODO: determine if such parameter exists.
-  --   return true
-  -- end
+local module = require("get_filters_from_id_list")
 
-  for _, title_id in ipairs(title_id_list) do
-    if Content.TitleId == title_id then
-      return true
-    end
-  end
+-- module.set_filters(
+--   Content,
+  -- "Xbox",
+--   title_id_list,
+--   Content.Group == ContentGroup.XboxClassic  --TODO: determine if such parameter exists.
+-- )
 
-  return false
-end
-
-GameListFilterCategories.User["Show Xbox"] = function(Content)
-  return is_xbox_classic(Content)
-end
-
-GameListFilterCategories.User["Hide Xbox"] = function(Content)
-  return not is_xbox_classic(Content)
-end
+module.set_filters(
+  Content,
+  "Xbox",
+  title_id_list
+)

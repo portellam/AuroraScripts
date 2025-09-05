@@ -49,24 +49,11 @@ local title_id_list = (
   0x584113e3,0x585502A6
 )
 
-local function is_xbox_360(Content)
-  if Content.Group == ContentGroup.Xbox360 then
-    return true
-  end
+local module = require("get_filters_from_id_list")
 
-  for _, title_id in ipairs(title_id_list) do
-    if Content.TitleId == title_id then
-      return true
-    end
-  end
-
-  return false
-end
-
-GameListFilterCategories.User["Show Xbox 360"] = function(Content)
-  return is_xbox_360(Content)
-end
-
-GameListFilterCategories.User["Hide Xbox 360"] = function(Content)
-  return not is_xbox_360(Content)
-end
+module.set_filters(
+  Content,
+  "Xbox 360",
+  title_id_list,
+  Content.Group == ContentGroup.Xbox360
+)
