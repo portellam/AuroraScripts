@@ -7,7 +7,8 @@ local function is_activision(content)
 end
 
 local function is_bandai_namco(content)
-	return is_publisher(content, "bandai", 6) or is_publisher(content, "namco", 5)
+	return is_publisher(content, "bandai", 6)
+	or is_publisher(content, "namco", 5)
 end
 
 local function is_bethesda(content)
@@ -27,7 +28,8 @@ local function is_disney(content)
 end
 
 local function is_ea(content)
-	return is_publisher(content, "electronic arts", 15) or is_publisher(content, "ea", 2)
+	return is_publisher(content, "electronic arts", 15)
+			or is_publisher(content, "ea", 2)
 end
 
 local function is_eidos(content)
@@ -39,7 +41,8 @@ local function is_konami(content)
 end
 
 local function is_microsoft(content)
-	return is_publisher(content, "microsoft", 9) or is_publisher(content, "mgs", 3)
+	return is_publisher(content, "microsoft", 9)
+			or is_publisher(content, "mgs", 3)
 end
 
 local function is_pop_cap(content)
@@ -67,7 +70,9 @@ local function is_ubisoft(content)
 end
 
 local function is_warner_bros(content)
-	return is_publisher(content, "warner bros", 11) or is_publisher(content, "wb games", 8) or is_publisher(content, "warner brothers", 15)
+	return is_publisher(content, "warner bros", 11)
+			or is_publisher(content, "wb games", 8)
+			or is_publisher(content, "warner brothers", 15)
 end
 
 GameListFilterCategories.Publishers = {
